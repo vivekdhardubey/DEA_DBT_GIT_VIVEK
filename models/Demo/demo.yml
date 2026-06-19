@@ -19,6 +19,9 @@ models:
                 
   - name: customer
     description:  "DBT model for customer " 
+  
+  - name: customer_view
+    description:  "DBT model for customer_view "  
 
 sources:
   - name: employee1
@@ -31,4 +34,3 @@ sources:
     schema: public
     tables: 
       - name: CUSTOMER_SRC
-      
