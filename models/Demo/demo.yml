@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: employee
+    description: "Employee DBT model"
+    columns:
+    - name :  emp_id
+      data_tests:
+        - unique
+        - not_null
+        - accepted_values:
+            arguments: 
+              values: ['1','2','3','4','5']
+              config:
+                severity: warn
+    - name: emp_salary
+      data_tests:
+        - salary_validation
+                
+  - name: customer
+    description:  "DBT model for customer " 
+  
+  - name: customer_view
+    description:  "DBT model for customer_view "  
+  - name: sales
+    description: "DBT model for the sales table"  
+
+sources:
+  - name: employee1
+    database: DBT_DB
+    schema: PUBLIC
+    tables:
+      - name: EMPLOYEE_RAW
+  - name: customer
+    database: DBT_DB
+    schema: public
+    tables: 
+      - name: CUSTOMER_SRC
+  - name: sales
+    database: DBT_DB
+    schema: PUBLIC
+    tables:
+      - name: SALES_SRC
